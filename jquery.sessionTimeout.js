@@ -167,7 +167,7 @@
             }
         }
 
-        function logout(value = '') {
+        function logout(value) {
             var xmlhttp;
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
@@ -185,7 +185,7 @@
                     if (xmlhttp.readyState === 4) {
                         window.location.href = o.logoutUrl + value;
                     }
-                }
+                };
             }
 
             return false;
