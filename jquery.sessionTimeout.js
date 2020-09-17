@@ -1,4 +1,6 @@
-﻿/*jshint browser:true*/
+/*jslint browser */
+/*jslint eval */
+/*global window */
 
 //
 // jquery.sessionTimeout.js
@@ -59,8 +61,8 @@
 //     If true, appends the current time stamp to the keepAliveUrl to prevent caching issues
 //     Default: true
 //
-(function($) {
-    jQuery.sessionTimeout = function(options) {
+(function ($) {
+    jQuery.sessionTimeout = function (options) {
         var defaults = {
             message: 'Your session is about to expire.',
             keepAliveUrl: '/keep-alive',
@@ -79,7 +81,9 @@
             dialogTimer,
             redirTimer;
 
-        if (options) { o = $.extend(defaults, options); }
+        if (options) {
+            o = $.extend(defaults, options);
+        }
 
         // Create timeout warning dialog
         $('body').append('<div title="Session Timeout" id="sessionTimeout-dialog">' + o.message + '</div>');
@@ -88,14 +92,16 @@
             width: 400,
             modal: true,
             closeOnEscape: false,
-            open: function() { $(".ui-dialog-titlebar-close").hide(); },
+            open: function () {
+                $(".ui-dialog-titlebar-close").hide();
+            },
             buttons: {
                 // Button one - performs logoutAction
-                "Log Out Now": function() {
+                "Log Out Now": function () {
                     eval(o.logoutClickAction);
                 },
                 // Button two - closes dialog and makes call to keepAliveUrl
-                "Stay Connected": function() {
+                "Stay Connected": function () {
                     $(this).dialog('close');
 
                     $.ajax({
@@ -112,32 +118,32 @@
 
         function controlDialogTimer(action) {
             switch (action) {
-                case 'start':
-                    // After warning period, show dialog and start redirect timer
-                    dialogTimer = setTimeout(function() {
-                        $('#sessionTimeout-dialog').dialog('open');
-                        controlRedirTimer('start');
-                    }, o.warnAfter);
-                    break;
+            case 'start':
+                // After warning period, show dialog and start redirect timer
+                dialogTimer = setTimeout(function () {
+                    $('#sessionTimeout-dialog').dialog('open');
+                    controlRedirTimer('start');
+                }, o.warnAfter);
+                break;
 
-                case 'stop':
-                    clearTimeout(dialogTimer);
-                    break;
+            case 'stop':
+                clearTimeout(dialogTimer);
+                break;
             }
         }
 
         function controlRedirTimer(action) {
             switch (action) {
-                case 'start':
-                    // Dialog has been shown, if no action taken during redir period, redirect
-                    redirTimer = setTimeout(function() {
-                        eval(o.timeoutAction);
-                    }, o.redirAfter - o.warnAfter);
-                    break;
+            case 'start':
+                // Dialog has been shown, if no action taken during redir period, redirect
+                redirTimer = setTimeout(function () {
+                    eval(o.timeoutAction);
+                }, o.redirAfter - o.warnAfter);
+                break;
 
-                case 'stop':
-                    clearTimeout(redirTimer);
-                    break;
+            case 'stop':
+                clearTimeout(redirTimer);
+                break;
             }
         }
 
@@ -165,9 +171,7 @@
             var xmlhttp;
             if (window.XMLHttpRequest) {
                 xmlhttp = new XMLHttpRequest();
-            }
-            // code for IE:
-            else if (window.ActiveXObject) {
+            } else if (window.ActiveXObject) { // code for IE:
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
             if (window.ActiveXObject) {
@@ -177,16 +181,17 @@
             } else {
                 xmlhttp.open("GET", o.preLogoutUrl, true, "logout", "logout");
                 xmlhttp.send("");
-                xmlhttp.onreadystatechange = function() {
-                    if (xmlhttp.readyState == 4) { window.location.href = o.logoutUrl + value; }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4) {
+                        window.location.href = o.logoutUrl + value;
+                    }
                 }
             }
 
             return false;
         }
 
-
-        $(document).ajaxComplete(function() {
+        $(document).ajaxComplete(function () {
             if (!$('#sessionTimeout-dialog').dialog("isOpen")) {
                 controlRedirTimer('stop');
                 controlDialogTimer('stop');
@@ -197,4 +202,4 @@
         // Begin warning period
         controlDialogTimer('start');
     };
-})(jQuery);
+}(jQuery));
