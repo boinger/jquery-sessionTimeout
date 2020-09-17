@@ -1,5 +1,6 @@
 MIT License (MIT)
 
+Copyright (c) 2020 Jeff Vier
 Copyright (c) 2013 Travis Horn
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
