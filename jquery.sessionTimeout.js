@@ -1,7 +1,5 @@
 /*jshint browser:true*/
 /*jshint -W061 */
-/*jslint browser */
-/*jslint eval */
 /*global window */
 
 //
