@@ -25,13 +25,21 @@ Default: '/keep-alive'
 How should we make the call to the keep-alive url? (GET/POST/PUT)<br>
 Default: 'POST'
 
-**redirUrl**<br>
-URL to take browser to if no action is take after warning period.<br>
-Default: '/timed-out'
+**logoutClickAction**<br>
+Function to execute if user clicks "Log Out Now".  logout() accepts a parameter to append to the logoutUrl.
+Default: 'logout('1')'
+
+**timeoutAction**<br>
+Function to execute on timeout.  logout() accepts a parameter to append to the logoutUrl.
+Default: 'logout("timeout")'
+
+**preLogoutUrl**<br>
+URL to load with (intentionally) invalid username/password in order to invalidate an htaccess-authenticated session.  Must return a '200 OK'
+Default: /prelogout
 
 **logoutUrl**<br>
-URL to take browser to if user clicks "Log Out Now".<br>
-Default: '/log-out'
+URL to load post logout.  logout() can append a string to this URL.
+Default: /logout?logoutreason=
 
 **warnAfter**<br>
 Time in milliseconds after page is opened until warning dialog is opened.<br>
@@ -45,5 +53,3 @@ Default: 1200000 (20 minutes)
 If true, appends the current time stamp to the Keep Alive url to prevent caching issues<br>
 Default: true
 
-## Links
-* [Online Demo](http://codepen.io/anon/pen/qEzNpd)
