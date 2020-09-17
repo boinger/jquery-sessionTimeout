@@ -1,3 +1,4 @@
+/*jshint browser:true*/
 /*jslint browser */
 /*jslint eval */
 /*global window */
