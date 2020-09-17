@@ -1,17 +1,10 @@
 # sessionTimeout
-[![Build Status](https://api.travis-ci.org/travishorn/jquery-sessionTimeout.png)](https://travis-ci.org/travishorn/jquery-sessionTimeout)
-
----
-
-## ⚠️ NOTICE
-
-This is an older version. The new version is a complete re-write with no dependencies. See
-[the new version here](https://github.com/travishorn/session-timeout).
+[![Build Status](https://travis-ci.com/boinger/jquery-sessionTimeout.svg?branch=master)](https://travis-ci.com/boinger/jquery-sessionTimeout)
 
 ---
 
 ## Description
-After a set amount of time, a dialog is shown to the user with the option to either log out now, or stay connected. If log out now is selected, the page is redirected to a logout URL. If stay connected is selected, a keep-alive URL is requested through AJAX. If no options is selected after another set amount of time, the page is automatically redirected to a timeout URL.
+After a set amount of time, a dialog is shown to the user with the option to either log out now, or stay connected. If log out now is selected, a logout function is executed. If stay connected is selected, a keep-alive URL is requested through AJAX. If no options is selected after another set amount of time, the page automatically executes a timeout function.
 
 ## Usage
 1. Include jQuery
@@ -54,4 +47,3 @@ Default: true
 
 ## Links
 * [Online Demo](http://codepen.io/anon/pen/qEzNpd)
-* [Screenshots](https://sites.google.com/site/tpopsjqueryplugins/sessiontimeout/screenshots)
