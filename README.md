@@ -27,7 +27,7 @@ Default: 'POST'
 
 **logoutClickAction**<br>
 Function to execute if user clicks "Log Out Now".  logout() accepts a parameter to append to the logoutUrl.
-Default: 'logout('1')'
+Default: 'logout('clicked')'
 
 **timeoutAction**<br>
 Function to execute on timeout.  logout() accepts a parameter to append to the logoutUrl.
