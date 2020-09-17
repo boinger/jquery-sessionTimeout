@@ -53,3 +53,5 @@ Default: 1200000 (20 minutes)
 If true, appends the current time stamp to the Keep Alive url to prevent caching issues<br>
 Default: true
 
+## Caveats:
+If the page you're installing this on uses auto-refreshing via AJAX, it will continuously self-reset since the timeout is using an .ajaxComplete() watcher to determine if the page is "in use".  If that's the case for you, you'll need to add some conditions to that section (near the bottom). 
